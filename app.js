@@ -47,7 +47,7 @@ io.on('connection', socket => {
         };
 
         messageData = await postMessageData(jsonData);
-        socket.emit('realTimeChatting', messageData);
+        socket.to(data['roomId'].toString()).emit('realTimeChatting', messageData);
 
         console.log(`[LOG] 실시간 채팅 이벤트`);
     });
