@@ -17,7 +17,7 @@ const MessageType = {
 };
 
 const postMessageData = async (jsonData) => {
-    return axios.post(BASE_URL+'/chat/message', jsonData);
+    return await axios.post(BASE_URL+'/chat/message', jsonData);
 };
 
 
