@@ -17,7 +17,9 @@ const MessageType = {
 };
 
 const postMessageData = async (jsonData) => {
-    return await axios.post(BASE_URL+'/chat/message', jsonData);
+    res = await axios.post(BASE_URL+'/chat/message', jsonData);
+
+    return res.data;
 };
 
 
@@ -48,6 +50,7 @@ io.on('connection', socket => {
 
         messageData = await postMessageData(jsonData);
         socket.to(data['roomId'].toString()).emit('realTimeChatting', messageData);
+        console.log(messageData)
 
         console.log(`[LOG] 실시간 채팅 이벤트`);
     });
