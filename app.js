@@ -61,7 +61,7 @@ io.on('connection', socket => {
         jsonData = {
             "roomId": data['roomId'],
             "token": data['token'],
-            "content": data['message'],
+            "content": data['file'],
             "type": MessageType.photo
         };
 
