@@ -31,25 +31,23 @@ io.on('connection', socket => {
         socket.emit('test', "test");
     });
 
-    socket.on('joinRoom', (data) => {
-        roomId = data['roomId']
-
-        socket.join(roomId.toString());
+    socket.on('joinRoom', (roomId) => {
+        socket.join(roomId);
         console.log(`[LOG] Join 이벤트 : ${roomId}`);
     })
 
-    socket.on('sendMessage', async (data) => {
+    socket.on('sendMessage', async (roomId, token, message) => {
         console.log(`[LOG] 메시지 이벤트 : ${data['message']}`);
 
         jsonData = {
-            "roomId": data['roomId'],
-            "token": data['token'],
-            "content": data['message'],
+            "roomId": roomId,
+            "token": token,
+            "content": message,
             "type": MessageType.message
         };
 
         messageData = await postMessageData(jsonData);
-        socket.broadcast.to(data['roomId'].toString()).emit('realTimeChatting', messageData);
+        socket.broadcast.to(data['roomId']).emit('realTimeChatting', messageData);
 
         console.log(`[LOG] ${data['roomId']} 에서 실시간 채팅 이벤트`);
         console.log(messageData)
