@@ -37,7 +37,7 @@ io.on('connection', socket => {
     })
 
     socket.on('sendMessage', async (roomId, token, message) => {
-        console.log(`[LOG] 메시지 이벤트 : ${data['message']}`);
+        console.log(`[LOG] ${roomId} 에서 메시지 이벤트 : ${message}`);
 
         jsonData = {
             "roomId": roomId,
@@ -47,26 +47,26 @@ io.on('connection', socket => {
         };
 
         messageData = await postMessageData(jsonData);
-        socket.broadcast.to(data['roomId']).emit('realTimeChatting', messageData);
+        socket.broadcast.to(roomId).emit('realTimeChatting', messageData);
 
-        console.log(`[LOG] ${data['roomId']} 에서 실시간 채팅 이벤트`);
+        console.log(`[LOG] ${roomId} 에서 실시간 채팅 이벤트`);
         console.log(messageData)
     });
 
-    socket.on('sendImage', async (data) => {
-        console.log(`[LOG] ${data['roomId']} 방에서 이미지 전송됨`);
+    socket.on('sendImage', async (roomId, token, file) => {
+        console.log(`[LOG] ${roomId} 방에서 이미지 전송됨`);
 
         jsonData = {
-            "roomId": data['roomId'],
-            "token": data['token'],
-            "content": data['file'],
+            "roomId": roomId,
+            "token": token,
+            "content": file,
             "type": MessageType.photo
         };
 
         messageData = await postMessageData(jsonData);
-        socket.broadcast.to(data['roomId'].toString()).emit('realTimeChatting', messageData);
+        socket.broadcast.to(roomId).emit('realTimeChatting', messageData);
 
-        console.log(`[LOG] ${data['roomId']} 에서 실시간 채팅 이벤트`);
+        console.log(`[LOG] ${roomId} 에서 실시간 채팅 이벤트`);
         console.log(messageData)
     });
 });
