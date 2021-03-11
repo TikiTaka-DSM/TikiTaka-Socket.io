@@ -6,6 +6,9 @@ const axios = require('axios');
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
+const cors = require('cors')
+
+app.use(cors());
 
 // const BASE_URL = "http://localhost:5000"
 const BASE_URL = "http://54.180.2.226:5000"
@@ -75,7 +78,6 @@ io.on('connection', socket => {
 server.listen(3000, () => {
     console.log('server on 3000')
 });
-
 
 
 
