@@ -20,6 +20,7 @@ const MessageType = {
 };
 
 const postMessageData = async (jsonData) => {
+    
     res = await axios.post(BASE_URL+'/chat/message', jsonData);
 
     return res.data;
@@ -75,8 +76,8 @@ io.on('connection', socket => {
 });
 
 
-server.listen(3000, () => {
-    console.log('server on 3000')
+server.listen(3003, () => {
+    console.log('server on 3003')
 });
 
 
