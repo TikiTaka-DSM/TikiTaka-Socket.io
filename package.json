@@ -1,0 +1,30 @@
+{
+  "name": "tikitaka-socketio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "npm": "^6.14.11",
+    "request": "^2.88.2",
+    "socket.io": "^3.1.0",
+    "socket.io-client": "^3.1.0",
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TikiTaka-DSM/TikiTaka-Socket.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TikiTaka-DSM/TikiTaka-Socket.io/issues"
+  },
+  "homepage": "https://github.com/TikiTaka-DSM/TikiTaka-Socket.io#readme"
+}
