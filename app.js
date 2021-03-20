@@ -5,7 +5,12 @@ const axios = require('axios');
 
 const app = express();
 const server = http.createServer(app);
-const io = socket(server);
+const io = socket(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 const cors = require('cors')
 
 app.use(cors());
