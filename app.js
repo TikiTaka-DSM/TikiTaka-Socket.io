@@ -15,8 +15,7 @@ const cors = require('cors')
 
 app.use(cors());
 
-// const BASE_URL = "http://localhost:5000"
-const BASE_URL = "http://54.180.2.226:5000"
+const BASE_URL = "http://localhost:5000"
 
 const MessageType = {
     "message": "text",
